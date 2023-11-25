@@ -2,6 +2,14 @@
 
 <?= $this->include('alerts') ?>
 
+<?php
+  if (session()->get('user') !== null) {
+    echo "<script>
+            window.location.replace('http://localhost:8080/login');
+          </script>";
+  } 
+?>
+
 <section class="">
   <div class="container h-full px-6 py-24 w-3/5 mx-auto">
     <div
@@ -26,6 +34,7 @@
             </label>
 
             <input
+              required
               type="text"
               name="username"
               value="<?= old('name') ?>"
@@ -41,6 +50,7 @@
               Password           
             </label>
             <input
+              required
               type="password"
               name="password"
               value="<?= old('name') ?>"

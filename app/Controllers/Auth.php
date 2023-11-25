@@ -58,4 +58,9 @@ class Auth extends BaseController
 
       return redirect()->to('login')->with('success', 'Account created.');
     }
+
+    public function logout() {
+      session()->destroy('user');
+      return redirect()->to('login');
+    }
 }

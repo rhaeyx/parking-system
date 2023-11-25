@@ -1,3 +1,11 @@
+<?php
+  if (session()->get('user') === null) {
+    echo "<script>
+            window.location.replace('http://localhost:8080/login');
+          </script>";
+  } 
+?>
+
 <nav
   class="relative flex w-full flex-nowrap items-center justify-between bg-primary py-4 text-white"
   data-te-navbar-ref>
@@ -21,9 +29,30 @@
             <a
               class="active lg:px-2 [&.active]:text-white"
               aria-current="page"
-              href="#"
+              href="<?= base_url('dashboard') ?>"
               >Home</a
             >
+          </div>
+          <?php if (session()->get('user')['role'] === 'driver'): ?>
+            <div
+                class="my-4 pl-2 lg:my-0 lg:pl-2 lg:pr-1">
+                <a
+                  class="active lg:px-2 [&.active]:text-white"
+                  aria-current="page"
+                  href="<?= base_url('reservations') ?>"
+                  >Reservations</a
+                >
+              </div>
+          <?php endif; ?>
+          <div
+            class="my-4 pl-2 lg:my-0 lg:pl-2 lg:pr-1">
+            <form action="<?= base_url('logout') ?>" method="POST">
+            <button type="submit"
+              class="active lg:px-2 [&.active]:text-white"
+              aria-current="page"
+              >Logout</a
+            >
+            </form>
           </div>
         </div>
       </div>

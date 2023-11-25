@@ -2,6 +2,14 @@
 
 <?= $this->include('alerts') ?>
 
+<?php
+  if (session()->get('user') !== null) {
+    echo "<script>
+            window.location.replace('http://localhost:8080/dashboard');
+          </script>";
+  } 
+?>
+
 <section class="">
   <div class="container h-full px-6 py-24 w-3/5 mx-auto">
     <div
@@ -25,6 +33,7 @@
             </label>
 
             <input
+              required
               type="text"
               name="firstname"
               class="border-2 border-black rounded-md px-2 py-1"
@@ -39,6 +48,7 @@
             </label>
 
             <input
+              required
               type="text"
               name="lastname"
               class="border-2 border-black rounded-md px-2 py-1"
@@ -49,7 +59,7 @@
           <div class="relative mb-6 flex flex-col space-y-2" data-te-input-wrapper-init>
             <label
               for="exampleFormControlInput3">
-              Last Name   
+              User Type   
             </label>
 
             <select
@@ -69,6 +79,7 @@
             </label>
 
             <input
+              required
               type="text"
               name="username"
               class="border-2 border-black rounded-md px-2 py-1"
@@ -82,6 +93,7 @@
               Password           
             </label>
             <input
+              required
               type="password"
               name="password"
               class="border-2 border-black rounded-md px-2 py-1"
@@ -92,9 +104,10 @@
           <div class="relative mb-6 flex flex-col space-y-2" data-te-input-wrapper-init>
             <label
               for="exampleFormControlInput3">
-              Password           
+              Confirm Password           
             </label>
             <input
+              required
               type="password"
               name="password-confirm"
               class="border-2 border-black rounded-md px-2 py-1"
